@@ -23,21 +23,21 @@ variable "aws_secret_key" {
 }
 */
 variable "credentialsfile" {
-  default = "/Users/giuseppe/.aws/credentials" #replace your home directory
+  default = "/home/jenkins/.aws/credentials" #replace your home directory
   description = "where your access and secret_key are stored, you create the file when you run the aws config"
 }
 
-variable "Vpc-Full_cidr" {
+variable "vpc-fullcidr" {
     default = "172.28.0.0/16"
-  description = "VPC CIDR"
+  description = "the vpc cdir"
 }
 variable "Subnet-Public-AzA-CIDR" {
   default = "172.28.0.0/24"
-  description = "Public_Subnet_CIDR"
+  description = "the cidr of the subnet"
 }
 variable "Subnet-Private-AzA-CIDR" {
   default = "172.28.3.0/24"
-  description = "Private_Subnet_CIDR"
+  description = "the cidr of the subnet"
 }
 variable "key_name" {
   default = "carbyne_tf_demo"
