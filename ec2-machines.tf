@@ -46,3 +46,15 @@ resource "aws_instance" "database" {
   mysql -u root -psecret -e "INSERT INTO mytable (mycol) values ('Haim_Cohen_is_the_best') ;" test
 HEREDOC
 }
+
+resource "aws_instance" "grafana" {
+  ami           = "${lookup(var.AmiLinux, var.region)}"
+  instance_type = "t2.micro"
+  associate_public_ip_address = "true"
+  subnet_id = "${aws_subnet.PrivateAZA.id}"
+  vpc_security_group_ids = ["${aws_security_group.grafana.id}"]
+  key_name = "${var.key_name}"
+  tags {
+        Name = "grafana"
+  }
+}
