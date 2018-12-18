@@ -54,7 +54,7 @@ resource "aws_security_group" "Database" {
 }
 
 resource "aws_security_group" "grafana" {
-  name = "FrontEnd"
+  name = "grafana"
   tags {
         Name = "grafana"
   }
