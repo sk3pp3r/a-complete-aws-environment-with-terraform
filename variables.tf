@@ -40,7 +40,7 @@ variable "Subnet-Private-AzA-CIDR" {
   description = "Private_Subnet_CIDR"
 }
 variable "key_name" {
-  default = "demotmp"
+  default = "carbyne_tf_demo"
   description = "the ssh key to use in the EC2 machines"
 }
 variable "DnsZoneName" {
