@@ -63,6 +63,15 @@ resource "aws_instance" "grafana" {
         Service = "DevOps"
         Stack = "DevOps"
   }
+  user_data = <<HEREDOC
+  #!/bin/bash
+  sudo yum update -y
+  sudo yum install docker -y
+  sudo service docker start
+  sudo usermod -a -G docker ec2-user
+  sudo docker pull grafana/grafana
+  sudo docker run -d --name=grafana -p 3000:3000 grafana/grafana
+HEREDOC
 }
 
 resource "aws_instance" "ansible" {
@@ -77,6 +86,7 @@ resource "aws_instance" "ansible" {
         Service = "DevOps"
         Stack = "DevOps"
   }
+
   user_data = <<HEREDOC
   #!/bin/bash
   sudo yum-config-manager --enable epel

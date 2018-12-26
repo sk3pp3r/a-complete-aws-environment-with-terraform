@@ -53,7 +53,7 @@ resource "aws_security_group" "Database" {
   }
 }
 
-resource "aws_security_group" "grafana" {
+resource "aws_security_group" "Grafana" {
   name = "grafana"
   tags {
         Name = "grafana"
@@ -62,8 +62,8 @@ resource "aws_security_group" "grafana" {
   vpc_id = "${aws_vpc.terraformmain.id}"
 
   ingress {
-        from_port = 443
-        to_port = 443
+        from_port = 3000
+        to_port = 3000
         protocol = "TCP"
         cidr_blocks = ["0.0.0.0/0"]
   }
@@ -81,7 +81,7 @@ resource "aws_security_group" "grafana" {
   }
 }
 
-resource "aws_security_group" "ansible" {
+resource "aws_security_group" "Ansible" {
   name = "ansible"
   tags {
         Name = "ansible"
