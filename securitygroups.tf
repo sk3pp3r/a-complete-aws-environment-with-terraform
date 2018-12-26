@@ -80,3 +80,25 @@ resource "aws_security_group" "grafana" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
+
+resource "aws_security_group" "ansible" {
+  name = "ansible"
+  tags {
+        Name = "ansible"
+  }
+  description = "ONLY HTTPS CONNECTION INBOUD"
+  vpc_id = "${aws_vpc.terraformmain.id}"
+
+  ingress {
+    from_port   = "22"
+    to_port     = "22"
+    protocol    = "TCP"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+  egress {
+    from_port = 0
+    to_port = 0
+    protocol = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}

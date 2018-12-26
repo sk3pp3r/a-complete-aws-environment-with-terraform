@@ -7,6 +7,8 @@ resource "aws_instance" "phpapp" {
   key_name = "${var.key_name}"
   tags {
         Name = "phpapp"
+        Service = "DevOps"
+        Stack = "DevOps"
   }
   user_data = <<HEREDOC
   #!/bin/bash
@@ -33,6 +35,8 @@ resource "aws_instance" "database" {
   key_name = "${var.key_name}"
   tags {
         Name = "database"
+        Service = "DevOps"
+        Stack = "DevOps"
   }
   user_data = <<HEREDOC
   #!/bin/bash
@@ -56,5 +60,26 @@ resource "aws_instance" "grafana" {
   key_name = "${var.key_name}"
   tags {
         Name = "grafana"
+        Service = "DevOps"
+        Stack = "DevOps"
   }
+}
+
+resource "aws_instance" "ansible" {
+  ami           = "${lookup(var.AmiLinux, var.region)}"
+  instance_type = "t2.micro"
+  associate_public_ip_address = "true"
+  subnet_id = "${aws_subnet.PublicAZA.id}"
+  vpc_security_group_ids = ["${aws_security_group.ansible.id}"]
+  key_name = "${var.key_name}"
+  tags {
+        Name = "ansible"
+        Service = "DevOps"
+        Stack = "DevOps"
+  }
+  user_data = <<HEREDOC
+  #!/bin/bash
+  sudo yum-config-manager --enable epel
+  sudo yum install ansible -y
+HEREDOC
 }
