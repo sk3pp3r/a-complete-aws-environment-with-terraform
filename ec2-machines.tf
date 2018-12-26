@@ -56,7 +56,7 @@ resource "aws_instance" "grafana" {
   instance_type = "t2.micro"
   associate_public_ip_address = "true"
   subnet_id = "${aws_subnet.PublicAZA.id}"
-  vpc_security_group_ids = ["${aws_security_group.grafana.id}"]
+  vpc_security_group_ids = ["${aws_security_group.Grafana.id}"]
   key_name = "${var.key_name}"
   tags {
         Name = "grafana"
@@ -79,7 +79,7 @@ resource "aws_instance" "ansible" {
   instance_type = "t2.micro"
   associate_public_ip_address = "true"
   subnet_id = "${aws_subnet.PublicAZA.id}"
-  vpc_security_group_ids = ["${aws_security_group.ansible.id}"]
+  vpc_security_group_ids = ["${aws_security_group.Ansible.id}"]
   key_name = "${var.key_name}"
   tags {
         Name = "ansible"

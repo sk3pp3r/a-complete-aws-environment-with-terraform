@@ -54,9 +54,9 @@ resource "aws_security_group" "Database" {
 }
 
 resource "aws_security_group" "Grafana" {
-  name = "grafana"
+  name = "Grafana"
   tags {
-        Name = "grafana"
+        Name = "Grafana"
   }
   description = "ONLY HTTPS CONNECTION INBOUD"
   vpc_id = "${aws_vpc.terraformmain.id}"
@@ -82,9 +82,9 @@ resource "aws_security_group" "Grafana" {
 }
 
 resource "aws_security_group" "Ansible" {
-  name = "ansible"
+  name = "Ansible"
   tags {
-        Name = "ansible"
+        Name = "Ansible"
   }
   description = "ONLY HTTPS CONNECTION INBOUD"
   vpc_id = "${aws_vpc.terraformmain.id}"
