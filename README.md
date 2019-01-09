@@ -1,3 +1,1 @@
 # A COMPLETE AWS ENVIRONMENT WITH TERRAFORM
-
-Haim_Choen_DevOps_MidProject
