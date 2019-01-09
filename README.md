@@ -1,1 +1,1 @@
-# Mid Course | DevOps | Winter 2018-219
+# Mid Course | opsSchool | Winter 2018-219
